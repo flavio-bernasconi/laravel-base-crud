@@ -14,6 +14,9 @@
         @foreach ($people as $person)
           <li class="list-group-item pt-4 pb-4">
             <h3>{{ $person -> firstname}} {{ $person -> lastname}}</h3>
+            <a href="{{ route('editPerson', $person -> id)}}">Update</a>
+            <a href="{{ route('deletePerson', $person -> id)}}">delete</a>
+
           </li>
         @endforeach
       </ul>

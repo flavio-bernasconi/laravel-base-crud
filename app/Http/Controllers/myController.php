@@ -38,7 +38,8 @@ class myController extends Controller
      */
     public function store(Request $request)
     {
-      // return ('ciao');
+      // print_r($request -> all());
+      // die();
         $validatedData = $request -> validate([
           'firstname' => 'required',
           'lastname' => 'required',
@@ -71,7 +72,8 @@ class myController extends Controller
      */
     public function edit($id)
     {
-        //
+        $person = Person::findOrFail($id);
+        return view('editPerson', compact('person'));
     }
 
     /**
@@ -83,7 +85,17 @@ class myController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $validatedData = $request -> validate([
+        'firstname' => 'required',
+        'lastname' => 'required',
+        'age' => 'required',
+        'jobTitle' => 'required'
+      ]);
+
+      // dd($validatedData);
+
+      Person::whereId($id)->update($validatedData);
+      return redirect('/');
     }
 
     /**
@@ -94,6 +106,9 @@ class myController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $person = Person::findOrFail($id);
+        $person -> delete();
+
+        return redirect('/');
     }
 }

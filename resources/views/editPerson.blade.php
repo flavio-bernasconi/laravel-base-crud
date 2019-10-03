@@ -13,30 +13,30 @@
           <a href="{{ route('start')}}" class="">Back</a>
         </div>
         <div class="col-12 mb-5">
-          <form action="{{ route('storePerson')}}" method="post" >
+          <form action="{{ route('updatePerson', $person -> id)}}" method="post" >
             @csrf
             @method('POST')
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>Name</label>
-                <input type="text" class="form-control" name="firstname"  placeholder="Name">
+                <input type="text" class="form-control" name="firstname"  value="{{$person -> firstname}}">
               </div>
               <div class="form-group col-md-6">
                 <label>lastname</label>
-                <input type="text" class="form-control" name="lastname"  placeholder="lastname">
+                <input type="text" class="form-control" name="lastname"  value="{{$person -> lastname}}">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>age</label>
-                <input type="number" class="form-control" name="age"  placeholder="age">
+                <input type="number" class="form-control" name="age"  value="{{$person -> age}}">
               </div>
               <div class="form-group col-md-6">
                 <label>jobTitle</label>
-                <input type="text" class="form-control" name="jobTitle"  placeholder="jobTitle">
+                <input type="text" class="form-control" name="jobTitle"  value="{{$person -> jobTitle}}">
               </div>
             </div>
-            <button type="submit" class="btn btn-dark mt-2">Add Person</button>
+            <button type="submit" class="btn btn-dark mt-2">Update Person</button>
           </form>
         </div>
 
